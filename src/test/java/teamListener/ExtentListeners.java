@@ -27,7 +27,7 @@ public class ExtentListeners implements ITestListener {
 
 	
 
-	private static ExtentReports extent = ExtentManager.createInstance(System.getProperty("user.dir") + "\\target\\reports\\" + fileName);
+	private static ExtentReports extent = ExtentManager.createInstance(System.getProperty("user.dir") + "\\reports\\" + fileName);
 
 	public static ThreadLocal<ExtentTest> testReport = new ThreadLocal<ExtentTest>();
 
