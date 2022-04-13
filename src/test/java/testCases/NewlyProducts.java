@@ -11,8 +11,7 @@ public class NewlyProducts extends BaseClass {
 	public Object[][] windowResolution() {
 
 		return new Object[][] { { 2560, 1440 }, { 1920, 1080 }, { 1280, 720 }, { 1366, 768 }, { 1920, 1200 },
-				{ 1440, 900 },
-				// {1536, 864}
+				{ 1440, 900 }, {1536, 864}
 		};
 	}
 
@@ -29,7 +28,7 @@ public class NewlyProducts extends BaseClass {
 		js.executeScript("arguments[0].click();", newlyAdded);
 		log.info("newlyAdded is successfully clicked");
 		Thread.sleep(3000);
-		checkResolutionForNewlyAndPopular(driver);
+		checkResolutionForNewlyAndPopular(driver, w, h);
 		driver.close();
 	}
 }
