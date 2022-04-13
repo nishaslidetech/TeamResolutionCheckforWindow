@@ -42,7 +42,7 @@ public class A4Pages extends BaseClass {
 			// click on pagination link
 
 			do {
-				checkResolutionForA4Pages(driver);
+				checkResolutionForA4Pages(driver, w, h);
 				if (!driver.findElements(By.xpath(OR.getProperty("NextButton"))).isEmpty()) {
 					WebElement nextButton = driver.findElement(By.xpath(OR.getProperty("NextButton")));
 					log.info("nextButton is successfully clicked");
