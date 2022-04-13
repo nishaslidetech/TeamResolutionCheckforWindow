@@ -77,7 +77,7 @@ public class BaseClass {
 
 	}
 
-	public static void checkResolutionSliPages(WebDriver driver) throws InterruptedException {
+	public static void checkResolutionSliPages(WebDriver driver, int w, int h) throws InterruptedException {
 
 		List<WebElement> sizeofPagination = driver.findElements(By.xpath(OR.getProperty("SliPagination")));
 
@@ -142,7 +142,7 @@ public class BaseClass {
 		}
 	}
 
-	public static void checkResolutionForNewlyAndPopular(WebDriver driver) throws InterruptedException {
+	public static void checkResolutionForNewlyAndPopular(WebDriver driver, int w, int h) throws InterruptedException {
 
 		List<WebElement> sizeofPagination = driver.findElements(By.xpath(OR.getProperty("Pagination1")));
 
@@ -210,7 +210,7 @@ public class BaseClass {
 		}
 	}
 
-	public static void checkResolutionForA4Pages(WebDriver driver) {
+	public static void checkResolutionForA4Pages(WebDriver driver, int w, int h) {
 
 		List<WebElement> listofImages = driver.findElements(By.xpath(OR.getProperty("A4images")));
 		//System.out.println("Number of elements:" + listofImages.size());
