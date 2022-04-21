@@ -11,12 +11,11 @@ public class NewlyProducts extends BaseClass {
 	public Object[][] windowResolution() {
 
 		return new Object[][] { { 2560, 1440 }, { 1920, 1080 }, { 1280, 720 }, { 1366, 768 }, { 1920, 1200 },
-				{ 1440, 900 },
-				// {1536, 864}
+				{ 1440, 900 }, {1536, 864}
 		};
 	}
 
-	@Test(dataProvider = "windowResolution", enabled = false)
+	@Test(dataProvider = "windowResolution", enabled = true)
 	public void checkResolutionForNewlyProducts(int w, int h) throws InterruptedException {
 		setDriver(w, h);
 		System.out.println("Resolution = " + w + "*" + h);
