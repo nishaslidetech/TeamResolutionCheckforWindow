@@ -16,9 +16,9 @@ public class A4Pages extends BaseClass {
 	@DataProvider
 	public Object[][] windowResolution() {
 
-		return new Object[][] {// { 2560, 1440 }, { 1920, 1080 }, { 1280, 720 }, { 1536, 864 }, { 1366, 768 },
-				//{ 1920, 1200 }, { 1440, 900 } 
-			{1680, 1050}
+		return new Object[][] {// { 2560, 1440 }, { 1920, 1200 }, { 1280, 720 }, { 1536, 864 }, { 1366, 768 },
+				{ 1920, 1080 }//, { 1440, 900 } 
+			//{1680, 1050}
 				
 		};
 	}
@@ -26,7 +26,7 @@ public class A4Pages extends BaseClass {
 	@Test(dataProvider = "windowResolution", enabled = false)
 	public void checkResolutionForA4Pages(int w, int h) throws InterruptedException {
 		setDriver(w, h);
-		System.out.println("Resolution = " + w + "*"+ h );
+	//	System.out.println("Resolution = " + w + "*"+ h );
 		driver.get(config.getProperty("testsiteurl"));
 		WebElement onePager = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(OR.getProperty("onePager"))));
 		onePager.click();
@@ -43,7 +43,8 @@ public class A4Pages extends BaseClass {
 			// click on pagination link
 
 			do {
-				checkResolutionForA4Pages(driver);
+				BaseClass.checkResolutionForA4Pages(driver, w, h);
+				
 				if (!driver.findElements(By.xpath(OR.getProperty("NextButton"))).isEmpty()) {
 					WebElement nextButton = driver.findElement(By.xpath(OR.getProperty("NextButton")));
 					log.info("nextButton is successfully clicked");

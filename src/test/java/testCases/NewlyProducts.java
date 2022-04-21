@@ -29,7 +29,7 @@ public class NewlyProducts extends BaseClass {
 		js.executeScript("arguments[0].click();", newlyAdded);
 		log.info("newlyAdded is successfully clicked");
 		Thread.sleep(3000);
-		checkResolutionForNewlyAndPopular(driver);
+		checkResolutionForNewlyAndPopular(driver, w, h);
 		driver.close();
 	}
 }

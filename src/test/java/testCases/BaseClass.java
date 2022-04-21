@@ -88,7 +88,7 @@ public class BaseClass {
 
 			// click on pagination link
 
-			do {
+			for (int j = 1; j < 2; j++) {
 				List<WebElement> listofImages = driver.findElements(By.xpath(OR.getProperty("SliImages")));
 				System.out.println("Number of elements:" + listofImages.size());
 
@@ -105,18 +105,18 @@ public class BaseClass {
 					df.setRoundingMode(RoundingMode.DOWN);
 					// System.out.println(df.format(roundedValue));
 					float f = Float.parseFloat(df.format(roundedValue));
-					if (f <= 1.34 || (f >= 1.34) && (f <= 1.76) || f >= 1.78 || f >= 0.70 || f <= 0.68) {
+					 System.out.println(f + " = float value");
+					if ((f > 1.79) || (f <= 1.47) || (f >= 1.49 && f <= 1.74)) {
 						System.out.println("URL = " + driver.getCurrentUrl() + "\n" + "PPtName = "
 								+ listofImages.get(i).getAttribute("title") + " -" + width + "-" + hight + "\n"
 								+ df.format(roundedValue));
 
 					}
 
-					/*
-					 * assertTrue(df.format(roundedValue).equals("1.33") ||
-					 * df.format(roundedValue).equals("0.69") ||
-					 * df.format(roundedValue).equals("1.77"), "image is not displayed properly");
-					 */
+					assertTrue(
+							df.format(roundedValue).equals("1.77") || df.format(roundedValue).equals("1.79")
+									|| df.format(roundedValue).equals("1.76") || df.format(roundedValue).equals("1.78"),
+							"image is not displayed properly");
 
 				}
 
@@ -129,13 +129,13 @@ public class BaseClass {
 				{
 					break;
 				}
-			} while (true);
+			}
 		} else {
 			System.out.println("No pagination exists");
 		}
 	}
 
-	public static void checkResolutionForNewlyAndPopular(WebDriver driver) throws InterruptedException {
+	public static void checkResolutionForNewlyAndPopular(WebDriver driver, int w, int h) throws InterruptedException {
 
 		List<WebElement> sizeofPagination = driver.findElements(By.xpath(OR.getProperty("Pagination1")));
 
@@ -146,7 +146,7 @@ public class BaseClass {
 
 			// click on pagination link
 
-			do {
+			for (int j = 1; j < 2; j++) {
 				List<WebElement> listofImages = driver.findElements(By.xpath(OR.getProperty("images1")));
 				System.out.println("Number of elements:" + listofImages.size());
 
@@ -163,23 +163,27 @@ public class BaseClass {
 					df.setRoundingMode(RoundingMode.DOWN);
 					// System.out.println(df.format(roundedValue));
 					float f = Float.parseFloat(df.format(roundedValue));
-					if (f <= 1.32 && f >= 0.70 || (f >= 1.34) && (f <= 1.76) || f >= 1.78 || (f >= 0.70) && (f <= 1.32)
-							|| f <= 0.68) {
+					if (f >= 1.78 || f <= 1.47 || f >= 1.49 && f <= 1.74) {
 						System.out.println("URL = " + driver.getCurrentUrl() + "\n" + "PPtName = "
 								+ listofImages.get(i).getAttribute("title") + " -" + width + "-" + hight + "\n"
-								+ df.format(roundedValue));
+								+ df.format(roundedValue) + "Resolution = " + w + "*" + h);
 
 					}
 
 					/*
-					 * assertTrue(df.format(roundedValue).equals("1.77") ||
-					 * df.format(roundedValue).equals("1.33") ||
-					 * df.format(roundedValue).equals("0.69") ||
-					 * df.format(roundedValue).equals("1.76")
+					 * if (f <= 1.32 && f >= 0.70 || (f >= 1.34) && (f <= 1.75) || f >= 1.79 || (f
+					 * >= 0.70) && (f <= 1.32) || f <= 0.68) { System.out.println("URL = " +
+					 * driver.getCurrentUrl() + "\n" + "PPtName = " +
+					 * listofImages.get(i).getAttribute("title") + " -" + width + "-" + hight + "\n"
+					 * + df.format(roundedValue) + "Resolution = "+ w + "*" +h);
 					 * 
-					 * || df.format(roundedValue).equals("1.25"),
-					 * "image is not displayed properly");
+					 * }
 					 */
+
+					assertTrue(
+							df.format(roundedValue).equals("1.77") || df.format(roundedValue).equals("1.75")
+									|| df.format(roundedValue).equals("1.76") || df.format(roundedValue).equals("1.48"),
+							"image is not displayed properly");
 
 				}
 				if (!driver.findElements(By.xpath(OR.getProperty("NextButton1"))).isEmpty()) {
@@ -191,13 +195,14 @@ public class BaseClass {
 				{
 					break;
 				}
-			} while (true);
+			}
+
 		} else {
 			System.out.println("No pagination exists");
 		}
 	}
 
-	public static void checkResolutionForA4Pages(WebDriver driver) {
+	public static void checkResolutionForA4Pages(WebDriver driver, int w, int h) {
 
 		List<WebElement> listofImages = driver.findElements(By.xpath(OR.getProperty("A4images")));
 		System.out.println("Number of elements:" + listofImages.size());
@@ -211,15 +216,14 @@ public class BaseClass {
 			df.setRoundingMode(RoundingMode.DOWN);
 			// System.out.println(df.format(roundedValue));
 			float f = Float.parseFloat(df.format(roundedValue));
-			// System.out.println(f + "float value");
+			// System.out.println(f + " = float value");
 			if (f >= 0.70 || f <= 0.68) {
 				System.out.println("URL = " + driver.getCurrentUrl() + "\n" + "PPtName = "
 						+ listofImages.get(i).getAttribute("title") + " -" + width + "-" + hight + "\n"
-						+ df.format(roundedValue));
+						+ df.format(roundedValue) + "Resolution = " + w + "*" + h);
 
 			}
-			// assertTrue(df.format(roundedValue).equals("0.69"), "image is not displayed
-			// properly");
+			assertTrue(df.format(roundedValue).equals("0.69"), "image is not displayed properly");
 
 		}
 	}

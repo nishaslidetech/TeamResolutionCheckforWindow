@@ -56,7 +56,7 @@ public class WindowResolutions extends BaseClass {
 		js.executeScript("arguments[0].click();", newlyAdded);
 		log.info("newlyAdded is successfully clicked");
 		Thread.sleep(3000);
-		checkResolutionForNewlyAndPopular(driver);
+		checkResolutionForNewlyAndPopular(driver, w, h);
 
 		// check resolution testing for popular PPts
 
@@ -68,7 +68,7 @@ public class WindowResolutions extends BaseClass {
 		Thread.sleep(3000);
 		log.info("popularPPts is successfully clicked");
 		Thread.sleep(3000);
-		BaseClass.checkResolutionForNewlyAndPopular(driver);
+		BaseClass.checkResolutionForNewlyAndPopular(driver, w, h);
 
 		// Check Resolution testing for the A4 Products
 
@@ -88,7 +88,7 @@ public class WindowResolutions extends BaseClass {
 			// click on pagination link
 
 			do {
-				BaseClass.checkResolutionForA4Pages(driver);
+				BaseClass.checkResolutionForA4Pages(driver, w, h);
 				if (!driver.findElements(By.xpath(OR.getProperty("NextButton"))).isEmpty()) {
 					WebElement nextButton = driver.findElement(By.xpath(OR.getProperty("NextButton")));
 					log.info("nextButton is successfully clicked");

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="10" total="11" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-04-06T17:57:14 IST" name="Suite" finished-at="2022-04-06T18:03:48 IST" duration-ms="393655">
+    <groups>
+    </groups>
+    <test started-at="2022-04-06T17:57:14 IST" name="ResolutionTest" finished-at="2022-04-06T18:03:48 IST" duration-ms="393655">
+      <class name="testCases.WindowResolutions">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.WindowResolutions@f99f5e0]" started-at="2022-04-06T17:57:14 IST" name="setUp" finished-at="2022-04-06T17:57:14 IST" duration-ms="21" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+      </class> <!-- testCases.WindowResolutions -->
+      <class name="testCases.PopularPPts">
+        <test-method signature="checkResolutionForpopularPPts(int,int)[pri:0, instance:testCases.PopularPPts@40317ba2]" started-at="2022-04-06T17:57:14 IST" name="checkResolutionForpopularPPts" data-provider="windowResolution" finished-at="2022-04-06T18:03:48 IST" duration-ms="393633" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1280]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[720]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkResolutionForpopularPPts -->
+      </class> <!-- testCases.PopularPPts -->
+    </test> <!-- ResolutionTest -->
+  </suite> <!-- Suite -->
+</testng-results>

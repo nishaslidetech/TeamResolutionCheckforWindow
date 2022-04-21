@@ -1,0 +1,10 @@
+teamListener\ExtentManager.class
+testCases\BaseClass.class
+testCases\SliPages.class
+teamListener\ExtentListeners.class
+testCases\WidgetsPages.class
+testCases\NewlyProducts.class
+testCases\WindowResolutions.class
+testCases\PopularPPts.class
+testCases\A4Pages.class
+teamListener\TakeScreenshots.class

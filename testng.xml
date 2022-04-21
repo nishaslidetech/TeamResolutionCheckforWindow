@@ -19,7 +19,7 @@
 			<class name="testCases.SliPages" />
 			<class name="testCases.WidgetsPages" />
 
-			<class name="teamListener.TakeScreenshots" />
+			
 
 		</classes>
 	</test> <!-- Test -->

@@ -93,7 +93,7 @@
 				<configuration>
 					<testFailureIgnore> false </testFailureIgnore>
 					<suiteXmlFiles>
-						<suiteXmlFile>${xmlSuiteFileName}</suiteXmlFile>
+						<suiteXmlFile>D:\Selenium Live Projects\TeamResolutionCheck\testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

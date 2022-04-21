@@ -15,8 +15,8 @@ public class PopularPPts extends BaseClass {
 	public Object[][] windowResolution() {
 
 		return new Object[][] {
-
-				{ 1920, 1080 }// , { 1280, 720 }, { 1920, 1200 }, { 1440, 900 }, { 2560, 1440 },
+			{ 1280, 720 }
+				//{ 1920, 1080 } // { 1280, 720 }, { 1920, 1200 }, { 1440, 900 }, { 2560, 1440 },
 				// { 1536, 864 },
 				// { 1366, 768 },
 		};
@@ -35,7 +35,7 @@ public class PopularPPts extends BaseClass {
 		Thread.sleep(3000);
 		log.info("popularPPts is successfully clicked");
 		Thread.sleep(3000);
-		checkResolutionForNewlyAndPopular(driver);
+		checkResolutionForNewlyAndPopular(driver, w, h);
 		driver.close();
 
 	}
