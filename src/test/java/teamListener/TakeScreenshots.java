@@ -29,7 +29,7 @@ public class TakeScreenshots extends BaseClass{
 
 		// System.out.println(System.getProperty("user.dir"));
 
-		FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\target\\reports\\" + screenshotName));
+		FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\reports\\" + screenshotName));
 
 	}
 
