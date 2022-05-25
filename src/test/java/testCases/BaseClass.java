@@ -14,6 +14,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -79,155 +80,158 @@ public class BaseClass {
 
 	public static void checkResolutionSliPages(WebDriver driver, int w, int h) throws InterruptedException {
 
-		List<WebElement> sizeofPagination = driver.findElements(By.xpath(OR.getProperty("SliPagination")));
+		long intialLength = (long) js.executeScript("return document.body.scrollHeight");
+		System.out.println("intialLength 1 = " + intialLength);
+		while (true) {
 
-		System.out.println(sizeofPagination.size() + " = size");
+			js.executeScript("window.scrollBy(0,10500)", "");
 
-		if (sizeofPagination.size() > 0) {
-			//System.out.println("pagination exists");
+			if (!(driver.findElements(By.xpath("//em[normalize-space()='Loading - please wait...']")).isEmpty())) {
+				try {
+					WebElement loader = driver
+							.findElement(By.xpath("//em[normalize-space()='Loading - please wait...']"));
+					js.executeScript("arguments[0].scrollIntoView();", loader);
+					Thread.sleep(10000);
 
-			// click on pagination link
-
-			for (int j = 1; j < 2; j++) {
-				List<WebElement> listofImages = driver.findElements(By.xpath(OR.getProperty("SliImages")));
-				//System.out.println("Number of elements:" + listofImages.size());
-
-				for (int i = 0; i < listofImages.size(); i++) {
-
-					float width = listofImages.get(i).getSize().getWidth();
-					float hight = listofImages.get(i).getSize().getHeight();
-
-					// System.out.println(listofImages.get(i).getAttribute("title") + " -" + width +
-					// "-" + hight);
-
-					float roundedValue = width / hight;
-					DecimalFormat df = new DecimalFormat("#.##");
-					df.setRoundingMode(RoundingMode.DOWN);
-					// System.out.println(df.format(roundedValue));
-					float f = Float.parseFloat(df.format(roundedValue));
-<<<<<<< HEAD
-					 System.out.println(f + " = float value");
-					if ((f > 1.79) || (f <= 1.47) || (f >= 1.49 && f <= 1.74)) {
-=======
-					if ((f <= 1.75) || f >= 1.78) {
-						System.out.println("URL = " + driver.getCurrentUrl() + "\n" + "PPtName = "
-								+ listofImages.get(i).getAttribute("title") + " -" + width + "-" + hight + "\n"
-								+ df.format(roundedValue) + "Resolution = " + w + "*" + h);
-
-					}
-					/*if (f <= 1.32 && f >= 0.70 || (f >= 1.34) && (f <= 1.76) || f >= 1.78 || (f >= 0.70) && (f <= 1.32)
-							|| f <= 0.68) {
->>>>>>> 6cc3104d31d490e65547650203bda316e233e19b
-						System.out.println("URL = " + driver.getCurrentUrl() + "\n" + "PPtName = "
-								+ listofImages.get(i).getAttribute("title") + " -" + width + "-" + hight + "\n"
-								+ df.format(roundedValue));
-
-					}*/
-
-					assertTrue(
-							df.format(roundedValue).equals("1.77") || df.format(roundedValue).equals("1.79")
-									|| df.format(roundedValue).equals("1.76") || df.format(roundedValue).equals("1.78"),
-							"image is not displayed properly");
-
-				}
-
-				if (!driver.findElements(By.xpath(OR.getProperty("SliPaginationNextButton"))).isEmpty()) {
-					WebElement nextButton = driver.findElement(By.xpath(OR.getProperty("SliPaginationNextButton")));
-					nextButton.click();
-					Thread.sleep(4000);
-				} else
-
-				{
-					break;
+				} catch (NoSuchElementException e) { // TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
-		} else {
-			System.out.println("No pagination exists");
+
+			Thread.sleep(4000);
+			long currentLength = (long) js.executeScript("return document.body.scrollHeight");
+			// System.out.println("currentLength = " + currentLength);
+			if (intialLength == currentLength) {
+				System.out.println("intialLength 1 = " + currentLength);
+				System.out.println("currentLength 1 = " + currentLength);
+				System.out.println("user is on this page = " + driver.getCurrentUrl());
+
+				try {
+					List<WebElement> listofImages = driver.findElements(By.xpath(OR.getProperty("SliImages"))); //
+					System.out.println("Number of elements:" + listofImages.size());
+
+					for (int i = 0; i < listofImages.size(); i++) {
+
+						float width = listofImages.get(i).getSize().getWidth();
+						float hight = listofImages.get(i).getSize().getHeight();
+
+						//System.out.println(listofImages.get(i).getAttribute("title") + " -" + width + "-" + hight);
+
+						float roundedValue = width / hight;
+						DecimalFormat df = new DecimalFormat("#.##");
+						df.setRoundingMode(RoundingMode.DOWN); //
+						System.out.println(df.format(roundedValue));
+						float f = Float.parseFloat(df.format(roundedValue));
+						// System.out.println(i + "--f = " + f);
+						// if (f >= 1.78 || f <= 1.47 || f >= 1.49 && f <= 1.74) {
+						if ((f < 1.75) || f > 1.79) {
+							System.out.println(
+									"URL = " + driver.getCurrentUrl() + "\n" + "PPtNumber = " + i + " -" + width + "-"
+											+ hight + "\n" + df.format(roundedValue) + "Resolution = " + w + "*" + h);
+
+						}
+
+						assertTrue(df.format(roundedValue).equals("1.77") || df.format(roundedValue).equals("1.78")
+								|| df.format(roundedValue).equals("1.76") || df.format(roundedValue).equals("1.79"),
+								"image is not displayed properly");
+
+					}
+				} catch (NumberFormatException e) {
+
+					e.printStackTrace();
+				}
+
+				break;
+			}
+			intialLength = currentLength;
+
 		}
 	}
 
 	public static void checkResolutionForNewlyAndPopular(WebDriver driver, int w, int h) throws InterruptedException {
 
-		List<WebElement> sizeofPagination = driver.findElements(By.xpath(OR.getProperty("Pagination1")));
+		long intialLength = (long) js.executeScript("return document.body.scrollHeight");
+		while (true) {
 
-		System.out.println(sizeofPagination.size() + " = size");
+			js.executeScript("window.scrollBy(0,10800)", "");
 
-		if (sizeofPagination.size() > 0) {
-			//System.out.println("pagination exists");
+			if (!(driver.findElements(By.xpath("//em[normalize-space()='Loading - please wait...']")).isEmpty())) {
+				try {
+					WebElement loader = driver
+							.findElement(By.xpath("//em[normalize-space()='Loading - please wait...']"));
+					js.executeScript("arguments[0].scrollIntoView();", loader);
+					Thread.sleep(10000);
 
-			// click on pagination link
-
-			for (int j = 1; j < 2; j++) {
-				List<WebElement> listofImages = driver.findElements(By.xpath(OR.getProperty("images1")));
-				//System.out.println("Number of elements:" + listofImages.size());
-
-				for (int i = 0; i < listofImages.size(); i++) {
-
-					float width = listofImages.get(i).getSize().getWidth();
-					float hight = listofImages.get(i).getSize().getHeight();
-
-					// System.out.println(listofImages.get(i).getAttribute("title") + " -" + width +
-					// "-" + hight);
-
-					float roundedValue = width / hight;
-					DecimalFormat df = new DecimalFormat("#.##");
-					df.setRoundingMode(RoundingMode.DOWN);
-					// System.out.println(df.format(roundedValue));
-					float f = Float.parseFloat(df.format(roundedValue));
-<<<<<<< HEAD
-					if (f >= 1.78 || f <= 1.47 || f >= 1.49 && f <= 1.74) {
-=======
-					if ((f <= 1.75) || f >= 1.78) {
-						System.out.println("URL = " + driver.getCurrentUrl() + "\n" + "PPtName = "
-								+ listofImages.get(i).getAttribute("title") + " -" + width + "-" + hight + "\n"
-								+ df.format(roundedValue) + "Resolution = " + w + "*" + h);
-
-					}
-					/*if (f <= 1.32 && f >= 0.70 || (f >= 1.34) && (f <= 1.75) || f >= 1.78 || (f >= 0.70) && (f <= 1.32)
-							|| f <= 0.68) {
->>>>>>> 6cc3104d31d490e65547650203bda316e233e19b
-						System.out.println("URL = " + driver.getCurrentUrl() + "\n" + "PPtName = "
-								+ listofImages.get(i).getAttribute("title") + " -" + width + "-" + hight + "\n"
-								+ df.format(roundedValue) + "Resolution = " + w + "*" + h);
-
-					}*/
-
-					/*
-					 * if (f <= 1.32 && f >= 0.70 || (f >= 1.34) && (f <= 1.75) || f >= 1.79 || (f
-					 * >= 0.70) && (f <= 1.32) || f <= 0.68) { System.out.println("URL = " +
-					 * driver.getCurrentUrl() + "\n" + "PPtName = " +
-					 * listofImages.get(i).getAttribute("title") + " -" + width + "-" + hight + "\n"
-					 * + df.format(roundedValue) + "Resolution = "+ w + "*" +h);
-					 * 
-					 * }
-					 */
-
-					assertTrue(
-							df.format(roundedValue).equals("1.77") || df.format(roundedValue).equals("1.75")
-									|| df.format(roundedValue).equals("1.76") || df.format(roundedValue).equals("1.48"),
-							"image is not displayed properly");
-
+				} catch (NoSuchElementException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				if (!driver.findElements(By.xpath(OR.getProperty("NextButton1"))).isEmpty()) {
-					WebElement nextButton = driver.findElement(By.xpath(OR.getProperty("NextButton1")));
-					nextButton.click();
-					Thread.sleep(3000);
-				} else
+			}
+			if (!(driver.findElements(By.xpath("//button[@type='submit']")).isEmpty())) {
+				try {
+					WebElement loadMorePPT = driver.findElement(By.xpath("//button[@type='submit']"));
+					js.executeScript("arguments[0].scrollIntoView();", loadMorePPT);
+					loadMorePPT.click();
+					Thread.sleep(10000);
 
-				{
-					break;
+				} catch (NoSuchElementException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 
-		} else {
-			System.out.println("No pagination exists");
+			long currentLength = (long) js.executeScript("return document.body.scrollHeight");
+			// System.out.println("currentLength = " + currentLength);
+			if (intialLength == currentLength) {
+				System.out.println("user is on this page = " + driver.getCurrentUrl());
+
+				try {
+					List<WebElement> listofImages = driver.findElements(By.xpath(OR.getProperty("images1")));
+					// System.out.println("Number of elements:" + listofImages.size());
+
+					for (int i = 0; i < listofImages.size(); i++) {
+
+						float width = listofImages.get(i).getSize().getWidth();
+						float hight = listofImages.get(i).getSize().getHeight();
+
+						System.out.println(listofImages.get(i).getAttribute("title") + " -" + width + "-" + hight);
+
+						float roundedValue = width / hight;
+						DecimalFormat df = new DecimalFormat("#.##");
+						df.setRoundingMode(RoundingMode.DOWN);
+						// System.out.println(df.format(roundedValue));
+						float f = Float.parseFloat(df.format(roundedValue));
+						System.out.println(i + "--f = " + f);
+						// if (f >= 1.78 || f <= 1.47 || f >= 1.49 && f <= 1.74) {
+						if ((f < 1.75) || f > 1.77) {
+							System.out.println(
+									"URL = " + driver.getCurrentUrl() + "\n" + "PPtNumber = " + i + " -" + width + "-"
+											+ hight + "\n" + df.format(roundedValue) + "Resolution = " + w + "*" + h);
+
+						}
+
+						assertTrue(df.format(roundedValue).equals("1.77") || df.format(roundedValue).equals("1.78")
+								|| df.format(roundedValue).equals("1.76") || df.format(roundedValue).equals("1.48"),
+								"image is not displayed properly");
+
+					}
+				} catch (NumberFormatException e) {
+
+					e.printStackTrace();
+				}
+				System.out.println("intialLength 1 = " + currentLength);
+				System.out.println("currentLength 1 = " + currentLength);
+				break;
+			}
+			intialLength = currentLength;
+
 		}
 	}
 
 	public static void checkResolutionForA4Pages(WebDriver driver, int w, int h) {
 
 		List<WebElement> listofImages = driver.findElements(By.xpath(OR.getProperty("A4images")));
-		//System.out.println("Number of elements:" + listofImages.size());
+		// System.out.println("Number of elements:" + listofImages.size());
 
 		for (int i = 0; i < listofImages.size(); i++) {
 

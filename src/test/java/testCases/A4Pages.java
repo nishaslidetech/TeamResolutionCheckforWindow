@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.DataProvider;
@@ -16,24 +17,20 @@ public class A4Pages extends BaseClass {
 	@DataProvider
 	public Object[][] windowResolution() {
 
-<<<<<<< HEAD
-		return new Object[][] {// { 2560, 1440 }, { 1920, 1200 }, { 1280, 720 }, { 1536, 864 }, { 1366, 768 },
-				{ 1920, 1080 }//, { 1440, 900 } 
-			//{1680, 1050}
-=======
 		return new Object[][] { { 2560, 1440 }, { 1920, 1080 }, { 1280, 720 }, { 1536, 864 }, { 1366, 768 },
-				{ 1920, 1200 }, { 1440, 900 }, {1680, 1050}
->>>>>>> 6cc3104d31d490e65547650203bda316e233e19b
-				
+				{ 1920, 1200 }, { 1440, 900 }, { 1680, 1050 }
+
 		};
 	}
 
 	@Test(dataProvider = "windowResolution", enabled = true)
 	public void checkResolutionForA4Pages(int w, int h) throws InterruptedException {
 		setDriver(w, h);
-	//	System.out.println("Resolution = " + w + "*"+ h );
+		System.out.println("Resolution for A4 pages= " + w + "*" + h);
 		driver.get(config.getProperty("testsiteurl"));
-		WebElement onePager = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(OR.getProperty("onePager"))));
+
+		WebElement onePager = wait
+				.until(ExpectedConditions.elementToBeClickable(By.linkText(OR.getProperty("onePager"))));
 		onePager.click();
 		log.info("onePager is successfully clicked");
 		Thread.sleep(3000);
@@ -48,12 +45,11 @@ public class A4Pages extends BaseClass {
 			// click on pagination link
 
 			do {
-<<<<<<< HEAD
+
 				BaseClass.checkResolutionForA4Pages(driver, w, h);
-				
-=======
+
 				checkResolutionForA4Pages(driver, w, h);
->>>>>>> 6cc3104d31d490e65547650203bda316e233e19b
+
 				if (!driver.findElements(By.xpath(OR.getProperty("NextButton"))).isEmpty()) {
 					WebElement nextButton = driver.findElement(By.xpath(OR.getProperty("NextButton")));
 					log.info("nextButton is successfully clicked");

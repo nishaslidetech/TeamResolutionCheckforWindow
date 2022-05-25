@@ -1,3 +1,8 @@
-INFO    2022-04-11 10:53:35,079 [main] testCases.BaseClass  - Config file loaded !!!
-INFO    2022-04-11 10:53:35,080 [main] testCases.BaseClass  - OR file loaded !!!
-INFO    2022-04-11 10:53:51,340 [main] testCases.BaseClass  - popularPPts is successfully clicked
+INFO    2022-05-25 11:08:48,485 [main] testCases.BaseClass  - Config file loaded !!!
+INFO    2022-05-25 11:08:48,486 [main] testCases.BaseClass  - OR file loaded !!!
+INFO    2022-05-25 11:08:55,875 [main] testCases.BaseClass  - strategy is successfully clicked
+INFO    2022-05-25 11:15:14,569 [main] testCases.BaseClass  - proposals is successfully clicked
+INFO    2022-05-25 11:16:24,293 [main] testCases.BaseClass  - professional is successfully clicked
+INFO    2022-05-25 11:16:31,630 [main] testCases.BaseClass  - management is successfully clicked
+INFO    2022-05-25 11:17:20,467 [main] testCases.BaseClass  - businessproposals is successfully clicked
+INFO    2022-05-25 11:17:27,709 [main] testCases.BaseClass  - orgCharts is successfully clicked

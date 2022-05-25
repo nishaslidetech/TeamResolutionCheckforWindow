@@ -1,33 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-04-11T10:53:35 IST" name="Default suite" finished-at="2022-04-11T11:02:23 IST" duration-ms="528876">
+  <suite started-at="2022-05-25T11:08:48 IST" name="Default suite" finished-at="2022-05-25T11:17:32 IST" duration-ms="524426">
     <groups>
     </groups>
-    <test started-at="2022-04-11T10:53:35 IST" name="Default test" finished-at="2022-04-11T11:02:23 IST" duration-ms="528876">
-      <class name="testCases.PopularPPts">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.PopularPPts@130c12b7]" started-at="2022-04-11T10:53:35 IST" name="setUp" finished-at="2022-04-11T10:53:35 IST" duration-ms="64" status="PASS">
+    <test started-at="2022-05-25T11:08:48 IST" name="Default test" finished-at="2022-05-25T11:17:32 IST" duration-ms="524426">
+      <class name="testCases.SliPages">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.SliPages@4d5650ae]" started-at="2022-05-25T11:08:48 IST" name="setUp" finished-at="2022-05-25T11:08:48 IST" duration-ms="69" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="checkResolutionForpopularPPts(int,int)[pri:0, instance:testCases.PopularPPts@130c12b7]" started-at="2022-04-11T10:53:35 IST" name="checkResolutionForpopularPPts" data-provider="windowResolution" finished-at="2022-04-11T11:02:23 IST" duration-ms="528852" status="PASS">
+        <test-method signature="checkResolutionForSliPages(int,int)[pri:0, instance:testCases.SliPages@4d5650ae]" started-at="2022-05-25T11:08:48 IST" name="checkResolutionForSliPages" data-provider="windowResolution" finished-at="2022-05-25T11:17:32 IST" duration-ms="524403" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[1280]]>
+                <![CDATA[2560]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[720]]>
+                <![CDATA[1440]]>
               </value>
             </param>
           </params>
+          <exception class="org.openqa.selenium.ElementClickInterceptedException">
+            <message>
+              <![CDATA[element click intercepted: Element <a class="menu-item" href="https://www.slideteam.net/search/go?&amp;w=education" title="Education">...</a> is not clickable at point (107, 15). Other element would receive the click: <img src="https://www.slideteam.net/static/version1653282663/frontend/Slideteam/default/en_US/Magento_Catalog/images/category/category_banner_left.png" alt="category-banner" loading="lazy">
+  (Session info: chrome=101.0.4951.67)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SLIDEQA2', ip: '192.168.1.2', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 101.0.4951.67, chrome: {chromedriverVersion: 101.0.4951.41 (93c720db8323..., userDataDir: C:\Users\SLIDEQ~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:51601}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: fbd4baeba183bde1e05b1bbb078815a5]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a class="menu-item" href="https://www.slideteam.net/search/go?&amp;w=education" title="Education">...</a> is not clickable at point (107, 15). Other element would receive the click: <img src="https://www.slideteam.net/static/version1653282663/frontend/Slideteam/default/en_US/Magento_Catalog/images/category/category_banner_left.png" alt="category-banner" loading="lazy">
+  (Session info: chrome=101.0.4951.67)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SLIDEQA2', ip: '192.168.1.2', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 101.0.4951.67, chrome: {chromedriverVersion: 101.0.4951.41 (93c720db8323..., userDataDir: C:\Users\SLIDEQ~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:51601}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: fbd4baeba183bde1e05b1bbb078815a5
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+at testCases.SliPages.checkResolutionForSliPages(SliPages.java:69)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- checkResolutionForpopularPPts -->
-      </class> <!-- testCases.PopularPPts -->
+        </test-method> <!-- checkResolutionForSliPages -->
+      </class> <!-- testCases.SliPages -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

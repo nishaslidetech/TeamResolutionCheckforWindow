@@ -15,15 +15,10 @@ public class PopularPPts extends BaseClass {
 	public Object[][] windowResolution() {
 
 		return new Object[][] {
-<<<<<<< HEAD
-			{ 1280, 720 }
-				//{ 1920, 1080 } // { 1280, 720 }, { 1920, 1200 }, { 1440, 900 }, { 2560, 1440 },
-				// { 1536, 864 },
-				// { 1366, 768 },
-=======
 
-				{ 1920, 1080 } , { 1280, 720 }, { 1920, 1200 }, { 1440, 900 }, { 2560, 1440 }, { 1536, 864 }, { 1366, 768 },
->>>>>>> 6cc3104d31d490e65547650203bda316e233e19b
+				{ 1920, 1080 }, { 1280, 720 }, { 1920, 1200 }, { 1440, 900 }, { 2560, 1440 }, { 1536, 864 },
+				{ 1366, 768 }, { 1680, 1050 }
+
 		};
 	}
 
@@ -31,9 +26,10 @@ public class PopularPPts extends BaseClass {
 	public void checkResolutionForpopularPPts(int w, int h) throws InterruptedException {
 
 		setDriver(w, h);
-		System.out.println("Resolution = " + w + "*" + h);
+		System.out.println("Resolution for popular prooducts= " + w + "*" + h);
 		driver.get(config.getProperty("testsiteurl"));
 		Thread.sleep(2000);
+
 		WebElement popularPPts = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath(OR.getProperty("PopularPPts"))));
 		popularPPts.click();
