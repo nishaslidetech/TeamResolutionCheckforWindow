@@ -187,7 +187,7 @@ public class BaseClass {
 
 				try {
 					List<WebElement> listofImages = driver.findElements(By.xpath(OR.getProperty("images1")));
-					// System.out.println("Number of elements:" + listofImages.size());
+					System.out.println("Number of elements:" + listofImages.size());
 
 					for (int i = 0; i < listofImages.size(); i++) {
 
@@ -201,7 +201,7 @@ public class BaseClass {
 						df.setRoundingMode(RoundingMode.DOWN);
 						// System.out.println(df.format(roundedValue));
 						float f = Float.parseFloat(df.format(roundedValue));
-						System.out.println(i + "--f = " + f);
+						//System.out.println(i + "--f = " + f);
 						// if (f >= 1.78 || f <= 1.47 || f >= 1.49 && f <= 1.74) {
 						if ((f < 1.75) || f > 1.77) {
 							System.out.println(
