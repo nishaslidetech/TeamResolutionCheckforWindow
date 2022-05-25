@@ -24,56 +24,56 @@ public class SliPages extends BaseClass {
 
 		WebElement strategy = wait
 				.until(ExpectedConditions.elementToBeClickable(By.linkText(OR.getProperty("strategy"))));
-		strategy.click();
+		js.executeScript("arguments[0].click();", strategy);
 		Thread.sleep(3000);
 		log.info("strategy is successfully clicked");
 		BaseClass.checkResolutionSliPages(driver, w, h);
 
 		WebElement proposals = wait
 				.until(ExpectedConditions.elementToBeClickable(By.linkText(OR.getProperty("proposals"))));
-		proposals.click();
+		js.executeScript("arguments[0].click();", proposals);
 		Thread.sleep(9000);
 		log.info("proposals is successfully clicked");
 		BaseClass.checkResolutionSliPages(driver, w, h);
 
 		WebElement professional = wait
 				.until(ExpectedConditions.elementToBeClickable(By.linkText(OR.getProperty("professional"))));
-		professional.click();
+		js.executeScript("arguments[0].click();", professional);
 		Thread.sleep(3000);
 		log.info("professional is successfully clicked");
 		BaseClass.checkResolutionSliPages(driver, w, h);
 
 		WebElement management = wait
 				.until(ExpectedConditions.elementToBeClickable(By.linkText(OR.getProperty("management"))));
-		management.click();
+		js.executeScript("arguments[0].click();", management);
 		Thread.sleep(3000);
 		log.info("management is successfully clicked");
 		BaseClass.checkResolutionSliPages(driver, w, h);
 
 		WebElement businessproposals = wait
 				.until(ExpectedConditions.elementToBeClickable(By.linkText(OR.getProperty("businessproposals"))));
-		businessproposals.click();
+		js.executeScript("arguments[0].click();", businessproposals);
 		Thread.sleep(3000);
 		log.info("businessproposals is successfully clicked");
 		BaseClass.checkResolutionSliPages(driver, w, h);
 
 		WebElement orgCharts = wait
 				.until(ExpectedConditions.elementToBeClickable(By.linkText(OR.getProperty("orgCharts"))));
-		orgCharts.click();
+		js.executeScript("arguments[0].click();", orgCharts);
 		Thread.sleep(3000);
 		log.info("orgCharts is successfully clicked");
 		BaseClass.checkResolutionSliPages(driver, w, h);
 
 		WebElement education = wait
 				.until(ExpectedConditions.elementToBeClickable(By.linkText(OR.getProperty("education"))));
-		education.click();
+		js.executeScript("arguments[0].click();", education);
 		Thread.sleep(3000);
 		log.info("education is successfully clicked");
 		BaseClass.checkResolutionSliPages(driver, w, h);
 
 		WebElement digitalMarketing = wait
 				.until(ExpectedConditions.elementToBeClickable(By.linkText(OR.getProperty("digitalMarketing"))));
-		digitalMarketing.click();
+		js.executeScript("arguments[0].click();", digitalMarketing);
 		Thread.sleep(3000);
 		log.info("digitalMarketing is successfully clicked");
 		BaseClass.checkResolutionSliPages(driver, w, h);
